@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     borderRadius: 4,
     width: '15%',
+    minWidth:150,
     alignSelf: 'center'
   },
   buttonText: {
