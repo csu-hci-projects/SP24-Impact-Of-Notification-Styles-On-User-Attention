@@ -71,7 +71,8 @@ const ReadingScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    justifyContent: 'space-between',
+    padding: 16
   },
   text: {
     fontSize: 18,
@@ -82,14 +83,15 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 4,
-    marginTop: 20,
+    width: '15%',
+    alignSelf: 'center'
   },
   buttonText: {
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
-    textAlign: 'center',
-  },
+    textAlign: 'center'
+  }
 });
 
 export default ReadingScreen;
