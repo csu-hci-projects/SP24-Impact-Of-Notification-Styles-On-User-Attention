@@ -1,8 +1,10 @@
+import React from 'react';
 import { useLocalSearchParams } from 'expo-router';
 import ReadingScreen from './components/ReadingScreen';
 
-export default function Reading() {
+const Reading = () => {
   const { notificationType } = useLocalSearchParams();
-
   return <ReadingScreen notificationType={notificationType} />;
-}
+};
+
+export default Reading;

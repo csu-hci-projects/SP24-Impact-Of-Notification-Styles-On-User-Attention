@@ -1,23 +1,17 @@
+// app.js
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import { NotifierWrapper } from 'react-native-notifier';
-import ReadingScreen from './components/ReadingScreen';
-
-const Stack = createStackNavigator();
+import { Stack } from 'expo-router';
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <NotifierWrapper>
-        <Stack.Navigator initialRouteName="Reading">
-          <Stack.Screen
-            name="Reading"
-            component={ReadingScreen}
-          />
-        </Stack.Navigator>
-      </NotifierWrapper>
-    </NavigationContainer>
+    <NotifierWrapper>
+      <Stack>
+        <Stack.Screen name="index" path="/" />
+        <Stack.Screen name="reading" path="/reading" />
+        <Stack.Screen name="wpm" path="/wpm" />
+      </Stack>
+    </NotifierWrapper>
   );
 };
 
