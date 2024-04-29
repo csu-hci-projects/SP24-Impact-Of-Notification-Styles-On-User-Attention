@@ -1,4 +1,5 @@
-// app.js
+// App.js
+
 import React from 'react';
 import { NotifierWrapper } from 'react-native-notifier';
 import { Stack } from 'expo-router';
