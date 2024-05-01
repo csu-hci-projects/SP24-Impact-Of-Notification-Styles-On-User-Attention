@@ -1,11 +1,13 @@
 // WpmScreen.js
+
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 
-const WpmScreen = ({ route }) => {
+const WpmScreen = () => {
   const { wpm, screen } = useLocalSearchParams();
   const router = useRouter();
+
   const currentScreen = parseInt(screen, 10) || 1;
   const nextScreen = currentScreen + 1;
 
@@ -23,12 +25,20 @@ const WpmScreen = ({ route }) => {
     router.push(`/reading?notificationType=${notificationType}&screen=${nextScreen}`);
   };
 
+  const handleFinishExperiment = () => {
+    router.push('/thanks');
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.wpmText}>Your reading speed: {wpm} WPM</Text>
-      {nextScreen <= 3 && (
+      {nextScreen <= 3 ? (
         <TouchableOpacity style={styles.button} onPress={handleStartNextReading}>
           <Text style={styles.buttonText}>Start Next Reading</Text>
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity style={styles.button} onPress={handleFinishExperiment}>
+          <Text style={styles.buttonText}>Finish Experiment</Text>
         </TouchableOpacity>
       )}
     </View>
