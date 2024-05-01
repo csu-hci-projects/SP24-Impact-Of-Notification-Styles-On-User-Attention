@@ -1,55 +1,49 @@
 // ReadingScreen.js
-import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Notifier, Easing, NotifierComponents } from 'react-native-notifier';
-import { useRouter } from 'expo-router';
 
-const ReadingScreen = ({ notificationType, readingText, screen }) => {
+import React, { useEffect, useState, useRef } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Linking } from 'react-native';
+import { useRouter, useLocalSearchParams } from 'expo-router';
+import NotificationModal from './NotificationModal';
+
+const ReadingScreen = ({ readingText }) => {
   const [startTime, setStartTime] = useState(null);
+  const [notificationVisible, setNotificationVisible] = useState(false);
+  const [notificationTitle, setNotificationTitle] = useState('');
+  const [notificationDescription, setNotificationDescription] = useState('');
   const router = useRouter();
+  const { notificationType, screen } = useLocalSearchParams();
+  const intrusiveIntervalRef = useRef(null);
+  const nonIntrusiveIntervalRef = useRef(null);
 
   useEffect(() => {
     setStartTime(new Date().getTime());
-    let intervalId;
 
+    return () => {
+      clearInterval(intrusiveIntervalRef.current);
+      clearInterval(nonIntrusiveIntervalRef.current);
+      setNotificationVisible(false);
+    };
+  }, []);
+
+  useEffect(() => {
     if (notificationType === 'intrusive') {
-      intervalId = setInterval(() => {
-        try {
-          Notifier.showNotification({
-            title: 'Intrusive Notification',
-            description: 'This is an intrusive notification',
-            duration: 2000,
-            showAnimationDuration: 800,
-            showEasing: Easing.bounce,
-            Component: NotifierComponents.Alert,
-            componentProps: {
-              alertType: 'error',
-            },
-          });
-        } catch (error) {
-          console.log('Error showing intrusive notification:', error);
-        }
+      setNotificationTitle('Intrusive Notification');
+      setNotificationDescription('This is an intrusive notification');
+      intrusiveIntervalRef.current = setInterval(() => {
+        setNotificationVisible(true);
       }, 5000);
     } else if (notificationType === 'non-intrusive') {
-      intervalId = setInterval(() => {
-        try {
-          Notifier.showNotification({
-            title: 'Non-Intrusive Notification',
-            description: 'This is a non-intrusive notification',
-            duration: 2000,
-            showAnimationDuration: 800,
-            showEasing: Easing.ease,
-          });
-        } catch (error) {
-          console.log('Error showing non-intrusive notification:', error);
-        }
-      }, 30000);
+      setNotificationTitle('Non-Intrusive Notification');
+      setNotificationDescription('This is a non-intrusive notification');
+      nonIntrusiveIntervalRef.current = setInterval(() => {
+        setNotificationVisible(true);
+      }, 5000);
     }
 
     return () => {
-      if (intervalId) {
-        clearInterval(intervalId);
-      }
+      clearInterval(intrusiveIntervalRef.current);
+      clearInterval(nonIntrusiveIntervalRef.current);
+      setNotificationVisible(false);
     };
   }, [notificationType]);
 
@@ -61,36 +55,39 @@ const ReadingScreen = ({ notificationType, readingText, screen }) => {
       const wordsCount = readingText.split(' ').length;
       wpm = Math.round((wordsCount / timeInSeconds) * 60);
     }
+    clearInterval(intrusiveIntervalRef.current);
+    clearInterval(nonIntrusiveIntervalRef.current);
+    setNotificationVisible(false);
+
+    const currentScreen = screen || '1';
+
+    if (currentScreen === '1') {
+      const googleFormUrl = `https://forms.gle/PEdjsftMQ7ZWXzyf6`;
+      Linking.openURL(googleFormUrl).catch((err) => console.error('An error occurred when opening the Google Form', err));
+    }
+
     router.push(`/wpm?wpm=${wpm}&screen=${screen}`);
   };
 
-  const handleTestNotification = () => {
-    try {
-      Notifier.showNotification({
-        title: 'Test Notification',
-        description: 'This is a test notification',
-        duration: 2000,
-        showAnimationDuration: 800,
-        showEasing: Easing.ease,
-        Component: NotifierComponents.Alert,
-        componentProps: {
-          alertType: 'error',
-        },
-      });
-    } catch (error) {
-      console.log('Error showing test notification:', error);
-    }
+  const handleCloseNotification = () => {
+    setNotificationVisible(false);
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{readingText || 'No reading text available'}</Text>
-      <TouchableOpacity style={styles.testButton} onPress={handleTestNotification}>
-        <Text style={styles.testButtonText}>Test Notification</Text>
-      </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={handleDoneReading}>
         <Text style={styles.buttonText}>Done Reading</Text>
       </TouchableOpacity>
+      {notificationVisible && (
+        <NotificationModal
+          visible={notificationVisible}
+          title={notificationTitle}
+          description={notificationDescription}
+          onClose={handleCloseNotification}
+          intrusive={notificationType === 'intrusive'}
+        />
+      )}
     </View>
   );
 };
@@ -104,20 +101,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     marginBottom: 20,
-  },
-  testButton: {
-    backgroundColor: '#FF5722',
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 4,
-    marginBottom: 16,
-    alignSelf: 'center',
-  },
-  testButtonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
   },
   button: {
     backgroundColor: '#007AFF',
