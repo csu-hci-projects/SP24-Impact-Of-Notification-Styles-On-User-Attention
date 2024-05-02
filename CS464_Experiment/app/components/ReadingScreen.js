@@ -102,7 +102,7 @@ const ReadingScreen = ({ readingText }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between',
+    alignItems: 'center',
     padding: 16,
   },
   scrollContainer: {
@@ -113,6 +113,9 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     marginBottom: 20,
+    width: '80%',
+    maxWidth: '100%',
+    alignSelf: 'center',
   },
   button: {
     backgroundColor: '#007AFF',

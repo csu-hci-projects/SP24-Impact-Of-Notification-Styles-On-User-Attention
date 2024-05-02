@@ -68,13 +68,12 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   stepContainer: {
-    justifyContent: 'left',
     alignItems: 'left',
   },
   step: {
     fontSize: 16,
     marginBottom: 10,
-    justifyContent: 'left'
+    justifyContent: 'center',
   },
   button: {
     backgroundColor: '#007AFF',
