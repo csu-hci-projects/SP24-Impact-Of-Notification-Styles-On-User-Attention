@@ -113,8 +113,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     marginBottom: 20,
-    width: '80%',
-    maxWidth: '100%',
     alignSelf: 'center',
   },
   button: {
