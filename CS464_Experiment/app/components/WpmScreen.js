@@ -42,10 +42,10 @@ const WpmScreen = () => {
       {!formSubmitted && (
         <>
           <View style={styles.promptContainer}>
-            <Text style={styles.promptText}>Have you entered the WPM and answered the {'\n'} respective questions about the reading on the form?</Text>
+            <Text style={styles.promptText}>Return to the form in the other tab and answer the questions for the reading</Text>
           </View>          
           <TouchableOpacity style={styles.button} onPress={handleFormSubmission}>
-            <Text style={styles.buttonText}>Yes</Text>
+            <Text style={styles.buttonText}>Press to confirm form completion</Text>
           </TouchableOpacity>
         </>
       )}
@@ -97,8 +97,8 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 4,
-    width: '15%',
-    minWidth: 150,
+    width: '25%',
+    minWidth: 250,
     alignSelf: 'center',
     marginTop: 20,
   },
