@@ -13,7 +13,7 @@ const InstructionsScreen = () => {
   };
 
   const handleOpenSurvey = () => {
-    const surveyUrl = 'https://forms.gle/PEdjsftMQ7ZWXzyf6';
+    const surveyUrl = 'https://forms.gle/9Wm1fd9xGv6uTmRb9';
     Linking.openURL(surveyUrl).catch((err) =>
       console.error('An error occurred when opening the survey', err)
     );
