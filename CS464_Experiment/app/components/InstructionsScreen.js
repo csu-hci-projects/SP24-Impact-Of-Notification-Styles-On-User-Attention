@@ -22,7 +22,7 @@ const InstructionsScreen = () => {
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
+      <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.title}>Instructions</Text>
         <Text style={styles.instructions}>
           Please read before continuing the experiment.
@@ -56,11 +56,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 16,
-  },
-  scrollContainer: {
-    flexGrow: 1,
-    justifyContent: 'space-between',
     padding: 16,
   },
   title: {
