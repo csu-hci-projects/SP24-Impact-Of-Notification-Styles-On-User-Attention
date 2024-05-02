@@ -3,6 +3,7 @@ frontend:
   phases:
     preBuild:
       commands:
+        - cd CS464_Experiment
         - npm install --quiet --global expo-cli
         - >
           if [ -f yarn.lock ]; then
@@ -16,7 +17,7 @@ frontend:
       commands:
         - expo build:web
   artifacts:
-    baseDirectory: web-build
+    baseDirectory: ./CS464_Experiment/web-build
     files:
       - '**/*'
   cache:
