@@ -41,13 +41,13 @@ const ReadingScreen = ({ readingText }) => {
       setNotificationDescription('This a notification');
       intrusiveIntervalRef.current = setInterval(() => {
         setNotificationVisible(true);
-      }, 11000);
+      }, 10000);
     } else if (notificationType === 'non-intrusive') {
       setNotificationTitle('Notification');
       setNotificationDescription('This is a notification');
       nonIntrusiveIntervalRef.current = setInterval(() => {
         setNotificationVisible(true);
-      }, 11000);
+      }, 10000);
     }
 
     return () => {
