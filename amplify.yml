@@ -4,23 +4,23 @@ frontend:
     preBuild:
       commands:
         - cd CS464_Experiment
-        - npm install --quiet --global expo-cli
+        - npx install expo
         - >
           if [ -f yarn.lock ]; then
             yarn
           elif [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
-            npm ci
+            npx i
           else
-            npm install
+            npx install
           fi
     build:
       commands:
-        - expo build:web
+        - npx expo build:web
   artifacts:
-    baseDirectory: ./CS464_Experiment/web-build
+    baseDirectory: web-build
     files:
       - '**/*'
   cache:
     paths:
       - node_modules/**/*
-      - $(npm root --global)/**/*
+      - $(npx root --global)/**/*
