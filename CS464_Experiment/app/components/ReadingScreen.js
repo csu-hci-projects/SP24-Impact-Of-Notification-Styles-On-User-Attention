@@ -37,17 +37,17 @@ const ReadingScreen = ({ readingText }) => {
 
   useEffect(() => {
     if (notificationType === 'intrusive') {
-      setNotificationTitle('Intrusive Notification');
-      setNotificationDescription('This is an intrusive notification');
+      setNotificationTitle('Notification');
+      setNotificationDescription('This a notification');
       intrusiveIntervalRef.current = setInterval(() => {
         setNotificationVisible(true);
-      }, 12000);
+      }, 11000);
     } else if (notificationType === 'non-intrusive') {
-      setNotificationTitle('Non-Intrusive Notification');
-      setNotificationDescription('This is a non-intrusive notification');
+      setNotificationTitle('Notification');
+      setNotificationDescription('This is a notification');
       nonIntrusiveIntervalRef.current = setInterval(() => {
         setNotificationVisible(true);
-      }, 12000);
+      }, 11000);
     }
 
     return () => {

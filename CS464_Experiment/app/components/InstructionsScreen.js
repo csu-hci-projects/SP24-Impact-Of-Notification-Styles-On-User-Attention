@@ -27,9 +27,12 @@ const InstructionsScreen = () => {
         Please follow these instructions before starting the reading experiment:
       </Text>
       <Text style={styles.step}>1. Read the instructions carefully.</Text>
-      <Text style={styles.step}>2. Keep the survey open and fill it out as you progress in the experiment.</Text>
-      <Text style={styles.step}>3. Open the survey by pressing the button below.</Text>
-      <Text style={styles.step}>4. Only answer the survey questions when done with each reading.</Text>
+      <Text style={styles.step}>2. Open the survey by pressing the button below.</Text>
+      <Text style={styles.step}>3. Keep the survey open and fill it out as you finish each section in the experiment.</Text>
+      <Text style={styles.step}>4. Only answer the survey questions when done with each section.</Text>
+      <Text style={styles.step}>5. Please DO NOT answer questions while you are reading the upcoming passages</Text>
+      <Text style={styles.step}>6. Please make sure you signed the consent form</Text>
+
       <TouchableOpacity style={styles.button} onPress={handleOpenSurvey}>
         <Text style={styles.buttonText}>Open Survey</Text>
       </TouchableOpacity>
