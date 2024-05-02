@@ -1,26 +1,25 @@
-version: 1.0
 frontend:
   phases:
     preBuild:
       commands:
         - cd CS464_Experiment
-        - npm install --quiet --global expo-cli
+        - npm install --global expo
         - >
           if [ -f yarn.lock ]; then
             yarn
           elif [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
-            npm ci
+            npm ic
           else
             npm install
           fi
     build:
       commands:
-        - expo build:web
+        - npx expo export --platform web
   artifacts:
-    baseDirectory: ./CS464_Experiment/web-build
+    baseDirectory: CS464_Experiment/dist
     files:
       - '**/*'
   cache:
     paths:
       - node_modules/**/*
-      - $(npm root --global)/**/*
+      - $(npx root --global)/**/*
