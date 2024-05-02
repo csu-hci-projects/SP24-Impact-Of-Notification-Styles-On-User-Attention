@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to the Notification Experiment</Text>
-      <Link href="/reading" style={styles.button}>
+      <Link href="/instructions" style={styles.button}>
         <Text style={styles.buttonText}>Start Experiment</Text>
       </Link>
     </View>
