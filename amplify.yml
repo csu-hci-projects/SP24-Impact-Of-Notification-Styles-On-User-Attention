@@ -18,7 +18,7 @@ frontend:
         - npx expo export --platform web
   artifacts:
     files:
-      - baseDirectory: web-build
+      baseDirectory: build
       - '**/*'
   cache:
     paths:
