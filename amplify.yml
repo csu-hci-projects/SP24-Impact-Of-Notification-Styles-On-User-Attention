@@ -1,10 +1,9 @@
-version: 1.0
 frontend:
   phases:
     preBuild:
       commands:
         - cd CS464_Experiment
-        - npm install --global expo 
+        - npm install --global expo
         - >
           if [ -f yarn.lock ]; then
             yarn
@@ -13,12 +12,9 @@ frontend:
           else
             npm install
           fi
-    build:
-      commands:
-        - npx expo export --platform web
   artifacts:
-      baseDirectory: build
-      files:
+    baseDirectory: dist  # or web-build
+    files:
       - '**/*'
   cache:
     paths:
