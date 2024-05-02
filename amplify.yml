@@ -16,7 +16,7 @@ frontend:
       commands:
         - npx expo export --platform web
   artifacts:
-    baseDirectory: dist  # or web-build
+    baseDirectory: CS464_Experiment/dist
     files:
       - '**/*'
   cache:
