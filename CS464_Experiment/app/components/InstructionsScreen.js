@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Linking } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Linking, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
 
 const InstructionsScreen = () => {
@@ -26,12 +26,11 @@ const InstructionsScreen = () => {
       <Text style={styles.instructions}>
         Please follow these instructions before starting the reading experiment:
       </Text>
-      <Text style={styles.step}>1. Read the instructions carefully.</Text>
-      <Text style={styles.step}>2. Open the survey by pressing the button below.</Text>
-      <Text style={styles.step}>3. Keep the survey open and fill it out as you finish each section in the experiment.</Text>
-      <Text style={styles.step}>4. Only answer the survey questions when done with each section.</Text>
-      <Text style={styles.step}>5. Please DO NOT answer questions while you are reading the upcoming passages</Text>
-      <Text style={styles.step}>6. Please make sure you signed the consent form</Text>
+      <Text style={styles.step}>1. Open the survey and read and complete the first section by pressing the button below.</Text>
+      <Text style={styles.step}>2. Keep the survey open and fill it out as you finish each section in the experiment.</Text>
+      <Text style={styles.step}>3. Only answer the survey questions when done with each section.</Text>
+      <Text style={styles.step}>4. Please DO NOT answer questions while you are reading the upcoming passages</Text>
+      <Text style={styles.step}>5. Please make sure you signed the consent form</Text>
 
       <TouchableOpacity style={styles.button} onPress={handleOpenSurvey}>
         <Text style={styles.buttonText}>Open Survey</Text>

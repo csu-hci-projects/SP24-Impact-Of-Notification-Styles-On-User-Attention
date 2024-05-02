@@ -1,7 +1,7 @@
 // ReadingScreen.js
 
 import React, { useEffect, useState, useRef } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, BackHandler } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, BackHandler, ScrollView } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import NotificationModal from './NotificationModal';
 
@@ -80,10 +80,12 @@ const ReadingScreen = ({ readingText }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{readingText || 'No reading text available'}</Text>
-      <TouchableOpacity style={styles.button} onPress={handleDoneReading}>
-        <Text style={styles.buttonText}>Done Reading</Text>
-      </TouchableOpacity>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <Text style={styles.text}>{readingText || 'No reading text available'}</Text>
+        <TouchableOpacity style={styles.button} onPress={handleDoneReading}>
+          <Text style={styles.buttonText}>Done Reading</Text>
+        </TouchableOpacity>
+      </ScrollView>
       {notificationVisible && (
         <NotificationModal
           visible={notificationVisible}
@@ -100,6 +102,11 @@ const ReadingScreen = ({ readingText }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'space-between',
+    padding: 16,
+  },
+  scrollContainer: {
+    flexGrow: 1,
     justifyContent: 'space-between',
     padding: 16,
   },
