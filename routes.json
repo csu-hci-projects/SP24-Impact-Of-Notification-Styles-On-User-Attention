@@ -1,8 +1,0 @@
-{
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/CS464_Experiment/index.html"
-      }
-    ]
-  }
