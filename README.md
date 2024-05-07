@@ -4,9 +4,9 @@ This is a mobile app built with React Native and Expo Router for CS464 to study 
 
 The app is hosted through AWS Amplify and can be found here: https://main.d2ui043a3wxlw.amplifyapp.com/
 
-Short Overview Video: https://youtu.be/HwPqogAiRMc
-Demo + Code Overview: https://youtu.be/xAy8w36ZWtE
-Link to Overleaf: https://www.overleaf.com/read/spzggqqmrjjm#c5f580 
+- Short Overview Video: https://youtu.be/HwPqogAiRMc
+- Demo + Code Overview: https://youtu.be/xAy8w36ZWtE
+- Link to Overleaf: https://www.overleaf.com/read/spzggqqmrjjm#c5f580 
 
 ## Prerequisites
 
